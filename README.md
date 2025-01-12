@@ -1,2 +1,2 @@
 # Codeby_Azat_Hajyyev
-My course repository
+It's edited README.md file
