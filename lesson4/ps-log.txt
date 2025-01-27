@@ -1,0 +1,338 @@
+Script started on 2025-01-27 17:37:54+05:00 [TERM="xterm" TTY="/dev/pts/1" COLUMNS="201" LINES="57"]
+[?2004h]0;root@prometheus: ~root@prometheus:~# ps ac[Kxu
+[?2004lUSER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.6 167156 12796 ?        Ss   Jan18   0:36 /sbin/init
+root           2  0.0  0.0      0     0 ?        S    Jan18   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   Jan18   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   Jan18   0:00 [rcu_par_gp]
+root           5  0.0  0.0      0     0 ?        I<   Jan18   0:00 [slub_flushwq]
+root           6  0.0  0.0      0     0 ?        I<   Jan18   0:00 [netns]
+root           8  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kworker/0:0H-events_highpri]
+root          10  0.0  0.0      0     0 ?        I<   Jan18   0:00 [mm_percpu_wq]
+root          11  0.0  0.0      0     0 ?        S    Jan18   0:00 [rcu_tasks_rude_]
+root          12  0.0  0.0      0     0 ?        S    Jan18   0:00 [rcu_tasks_trace]
+root          13  0.0  0.0      0     0 ?        S    Jan18   3:30 [ksoftirqd/0]
+root          14  0.0  0.0      0     0 ?        I    Jan18   0:57 [rcu_sched]
+root          15  0.0  0.0      0     0 ?        S    Jan18   0:04 [migration/0]
+root          16  0.0  0.0      0     0 ?        S    Jan18   0:00 [idle_inject/0]
+root          18  0.0  0.0      0     0 ?        S    Jan18   0:00 [cpuhp/0]
+root          19  0.0  0.0      0     0 ?        S    Jan18   0:00 [kdevtmpfs]
+root          20  0.0  0.0      0     0 ?        I<   Jan18   0:00 [inet_frag_wq]
+root          21  0.0  0.0      0     0 ?        S    Jan18   0:00 [kauditd]
+root          22  0.0  0.0      0     0 ?        S    Jan18   0:00 [khungtaskd]
+root          23  0.0  0.0      0     0 ?        S    Jan18   0:00 [oom_reaper]
+root          24  0.0  0.0      0     0 ?        I<   Jan18   0:00 [writeback]
+root          25  0.0  0.0      0     0 ?        S    Jan18   0:31 [kcompactd0]
+root          26  0.0  0.0      0     0 ?        SN   Jan18   0:00 [ksmd]
+root          27  0.0  0.0      0     0 ?        SN   Jan18   0:00 [khugepaged]
+root          73  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kintegrityd]
+root          74  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kblockd]
+root          75  0.0  0.0      0     0 ?        I<   Jan18   0:00 [blkcg_punt_bio]
+root          76  0.0  0.0      0     0 ?        I<   Jan18   0:00 [tpm_dev_wq]
+root          77  0.0  0.0      0     0 ?        I<   Jan18   0:00 [ata_sff]
+root          78  0.0  0.0      0     0 ?        I<   Jan18   0:00 [md]
+root          79  0.0  0.0      0     0 ?        I<   Jan18   0:00 [edac-poller]
+root          80  0.0  0.0      0     0 ?        I<   Jan18   0:00 [devfreq_wq]
+root          81  0.0  0.0      0     0 ?        S    Jan18   0:00 [watchdogd]
+root          83  0.0  0.0      0     0 ?        I<   Jan18   0:24 [kworker/0:1H-kblockd]
+root          85  0.0  0.0      0     0 ?        S    Jan18   0:00 [kswapd0]
+root          86  0.0  0.0      0     0 ?        S    Jan18   0:00 [ecryptfs-kthrea]
+root          88  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kthrotld]
+root          89  0.0  0.0      0     0 ?        I<   Jan18   0:00 [acpi_thermal_pm]
+root          91  0.0  0.0      0     0 ?        S    Jan18   0:00 [scsi_eh_0]
+root          92  0.0  0.0      0     0 ?        I<   Jan18   0:00 [scsi_tmf_0]
+root          93  0.0  0.0      0     0 ?        S    Jan18   0:00 [scsi_eh_1]
+root          94  0.0  0.0      0     0 ?        I<   Jan18   0:00 [scsi_tmf_1]
+root          96  0.0  0.0      0     0 ?        I<   Jan18   0:00 [vfio-irqfd-clea]
+root          97  0.0  0.0      0     0 ?        I<   Jan18   0:00 [mld]
+root          98  0.0  0.0      0     0 ?        I<   Jan18   0:00 [ipv6_addrconf]
+root         109  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kstrp]
+root         112  0.0  0.0      0     0 ?        I<   Jan18   0:00 [zswap-shrink]
+root         113  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kworker/u3:0]
+root         118  0.0  0.0      0     0 ?        I<   Jan18   0:00 [charger_manager]
+root         158  0.0  0.0      0     0 ?        S    Jan18   0:01 [hwrng]
+root         159  0.0  0.0      0     0 ?        I<   Jan18   0:00 [cryptd]
+root         234  0.0  0.0      0     0 ?        I<   Jan18   0:00 [raid5wq]
+root         281  0.0  0.0      0     0 ?        S    Jan18   0:40 [jbd2/vda2-8]
+root         282  0.0  0.0      0     0 ?        I<   Jan18   0:00 [ext4-rsv-conver]
+root         341  0.0  7.2 187280 146424 ?       S<s  Jan18   2:18 /lib/systemd/systemd-journald
+root         370  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kaluad]
+root         372  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kmpath_rdacd]
+root         374  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kmpathd]
+root         375  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kmpath_handlerd]
+root         377  0.0  1.3 289316 27100 ?        SLsl Jan18   1:02 /sbin/multipathd -d -s
+root         381  0.0  0.2  25108  5404 ?        Ss   Jan18   0:00 /lib/systemd/systemd-udevd
+systemd+     433  0.0  0.3  89364  6504 ?        Ssl  Jan18   0:01 /lib/systemd/systemd-timesyncd
+message+     438  0.0  0.2   8768  4652 ?        Ss   Jan18   0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+syslog       445  0.0  0.2 222408  5836 ?        Ssl  Jan18   0:26 /usr/sbin/rsyslogd -n -iNONE
+root         447  0.0  0.4  16348  8496 ?        Ss   Jan18   0:01 /lib/systemd/systemd-logind
+root         448  0.0  0.5 392488 10956 ?        Ssl  Jan18   0:00 /usr/libexec/udisks2/udisksd
+root         481  0.0  0.2 234504  5908 ?        Ssl  Jan18   0:00 /usr/libexec/polkitd --no-debug
+root         486  0.0  0.1  80052  3136 ?        Ssl  Jan18   5:00 /usr/sbin/qemu-ga
+grafana      786  0.1  8.5 1571688 172420 ?      Ssl  Jan18  17:59 /usr/share/grafana/bin/grafana server --config=/etc/grafana/grafana.ini --pidfile=/run/grafana/grafana-server.pid --packaging=deb cfg:
+prometh+     791  0.6  4.7 1751292 96468 ?       Ssl  Jan18  91:19 /usr/bin/prometheus --config.file /etc/prometheus/prometheus.yml --storage.tsdb.path /etc/prometheus/data
+root         794  0.0  2.7 1873756 56100 ?       Ssl  Jan18   7:59 /usr/local/x-ui/x-ui
+root         797  0.0  2.2 1727036 44840 ?       Ssl  Jan18   9:12 /usr/bin/containerd
+root         801  0.0  0.0   6176  1132 tty1     Ss+  Jan18   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+root         855  0.6  2.5 1257240 51436 ?       Sl   Jan18  80:44 bin/xray-linux-amd64 -c bin/config.json
+root         859  0.0  3.7 1840508 76256 ?       Ssl  Jan18   1:07 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+root       99834  0.0  0.4  16952  9240 ?        Ss   Jan24   0:00 /lib/systemd/systemd --user
+root       99836  0.0  0.1 103420  3176 ?        S    Jan24   0:00 (sd-pam)
+root      101257  0.0  0.2   8100  4216 ?        Ss   Jan24   0:00 ssh-agent -s
+root      111339  0.0  0.4  15432  9096 ?        Ss   Jan25   0:08 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root      114799  0.0  0.8 295592 17228 ?        Ssl  Jan26   0:00 /usr/libexec/packagekitd
+systemd+  124716  0.0  0.5  25664 11724 ?        Ss   Jan26   0:00 /lib/systemd/systemd-resolved
+www-data  124725  0.0  0.1   5360  3832 ?        Ss   Jan26   0:08 /usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
+www-data  124758  0.0  1.1 207364 22536 ?        Ss   Jan26   0:00 /usr/bin/php-cgi
+www-data  124759  0.0  0.7 207692 14816 ?        S    Jan26   0:01 /usr/bin/php-cgi
+www-data  124760  0.0  0.8 208200 16868 ?        S    Jan26   0:01 /usr/bin/php-cgi
+www-data  124761  0.0  0.8 208200 16584 ?        S    Jan26   0:01 /usr/bin/php-cgi
+www-data  124762  0.0  0.6 207824 13412 ?        S    Jan26   0:01 /usr/bin/php-cgi
+nobody    125132  0.0  0.3   9948  6532 ?        Ss   Jan26   2:02 /usr/local/sbin/openvpn --daemon --cd /etc/openvpn/ --config /etc/openvpn/server.conf
+pihole    125167  0.0  0.4 616868  8884 ?        S<sl Jan26   2:07 /usr/bin/pihole-FTL -f
+root      125283  0.0  0.1   6896  3032 ?        Ss   Jan26   0:00 /usr/sbin/cron -f -P
+root      146807  0.0  0.0      0     0 ?        I    00:09   0:02 [kworker/0:1-events]
+root      155367  0.0  0.0      0     0 ?        I    10:47   0:11 [kworker/0:0-events]
+root      158425  0.0  0.5  17464 11352 ?        Ss   13:35   0:00 sshd: root@pts/0
+root      158442  0.0  0.5  17152 11212 ?        Ss   13:35   0:00 sshd: root@notty
+root      158444  0.0  0.2   8788  5552 pts/0    Ss+  13:35   0:00 -bash
+root      158470  0.0  0.2   7776  5416 ?        Ss   13:35   0:00 /usr/lib/openssh/sftp-server
+root      158478  0.0  0.5  17464 11464 ?        Ss   13:35   0:00 sshd: root@pts/1
+root      158495  0.0  0.5  17156 11136 ?        Ss   13:35   0:00 sshd: root@notty
+root      158497  0.0  0.2   8920  5668 pts/1    Ss   13:35   0:00 -bash
+root      158523  0.0  0.2   7776  5516 ?        Ss   13:35   0:00 /usr/lib/openssh/sftp-server
+root      161443  0.0  0.0      0     0 ?        I    16:53   0:00 [kworker/u2:3-events_unbound]
+root      161949  0.0  0.0      0     0 ?        I    17:30   0:00 [kworker/u2:2-events_unbound]
+root      161996  0.0  0.0      0     0 ?        I    17:35   0:00 [kworker/u2:0-events_unbound]
+root      162047  0.0  0.1   9952  3572 pts/1    T    17:37   0:00 top
+root      162051  0.0  0.0   5788  1096 pts/1    S+   17:37   0:00 script ps-log.txt
+root      162052  0.0  0.2   7768  4176 pts/2    Ss   17:37   0:00 bash -i
+root      162063  0.0  0.0  10072  1556 pts/2    R+   17:38   0:00 ps axu
+[?2004h]0;root@prometheus: ~root@prometheus:~# ps -u root
+[?2004l    PID TTY          TIME CMD
+      1 ?        00:00:36 systemd
+      2 ?        00:00:00 kthreadd
+      3 ?        00:00:00 rcu_gp
+      4 ?        00:00:00 rcu_par_gp
+      5 ?        00:00:00 slub_flushwq
+      6 ?        00:00:00 netns
+      8 ?        00:00:00 kworker/0:0H-events_highpri
+     10 ?        00:00:00 mm_percpu_wq
+     11 ?        00:00:00 rcu_tasks_rude_
+     12 ?        00:00:00 rcu_tasks_trace
+     13 ?        00:03:30 ksoftirqd/0
+     14 ?        00:00:57 rcu_sched
+     15 ?        00:00:04 migration/0
+     16 ?        00:00:00 idle_inject/0
+     18 ?        00:00:00 cpuhp/0
+     19 ?        00:00:00 kdevtmpfs
+     20 ?        00:00:00 inet_frag_wq
+     21 ?        00:00:00 kauditd
+     22 ?        00:00:00 khungtaskd
+     23 ?        00:00:00 oom_reaper
+     24 ?        00:00:00 writeback
+     25 ?        00:00:31 kcompactd0
+     26 ?        00:00:00 ksmd
+     27 ?        00:00:00 khugepaged
+     73 ?        00:00:00 kintegrityd
+     74 ?        00:00:00 kblockd
+     75 ?        00:00:00 blkcg_punt_bio
+     76 ?        00:00:00 tpm_dev_wq
+     77 ?        00:00:00 ata_sff
+     78 ?        00:00:00 md
+     79 ?        00:00:00 edac-poller
+     80 ?        00:00:00 devfreq_wq
+     81 ?        00:00:00 watchdogd
+     83 ?        00:00:24 kworker/0:1H-kblockd
+     85 ?        00:00:00 kswapd0
+     86 ?        00:00:00 ecryptfs-kthrea
+     88 ?        00:00:00 kthrotld
+     89 ?        00:00:00 acpi_thermal_pm
+     91 ?        00:00:00 scsi_eh_0
+     92 ?        00:00:00 scsi_tmf_0
+     93 ?        00:00:00 scsi_eh_1
+     94 ?        00:00:00 scsi_tmf_1
+     96 ?        00:00:00 vfio-irqfd-clea
+     97 ?        00:00:00 mld
+     98 ?        00:00:00 ipv6_addrconf
+    109 ?        00:00:00 kstrp
+    112 ?        00:00:00 zswap-shrink
+    113 ?        00:00:00 kworker/u3:0
+    118 ?        00:00:00 charger_manager
+    158 ?        00:00:01 hwrng
+    159 ?        00:00:00 cryptd
+    234 ?        00:00:00 raid5wq
+    281 ?        00:00:40 jbd2/vda2-8
+    282 ?        00:00:00 ext4-rsv-conver
+    341 ?        00:02:18 systemd-journal
+    370 ?        00:00:00 kaluad
+    372 ?        00:00:00 kmpath_rdacd
+    374 ?        00:00:00 kmpathd
+    375 ?        00:00:00 kmpath_handlerd
+    377 ?        00:01:02 multipathd
+    381 ?        00:00:00 systemd-udevd
+    447 ?        00:00:01 systemd-logind
+    448 ?        00:00:00 udisksd
+    481 ?        00:00:00 polkitd
+    486 ?        00:05:00 qemu-ga
+    794 ?        00:07:59 x-ui
+    797 ?        00:09:12 containerd
+    801 tty1     00:00:00 agetty
+    855 ?        01:20:44 xray-linux-amd6
+    859 ?        00:01:07 dockerd
+  99834 ?        00:00:00 systemd
+  99836 ?        00:00:00 (sd-pam)
+ 101257 ?        00:00:00 ssh-agent
+ 111339 ?        00:00:08 sshd
+ 114799 ?        00:00:00 packagekitd
+ 125283 ?        00:00:00 cron
+ 146807 ?        00:00:02 kworker/0:1-events
+ 155367 ?        00:00:11 kworker/0:0-events
+ 158425 ?        00:00:00 sshd
+ 158442 ?        00:00:00 sshd
+ 158444 pts/0    00:00:00 bash
+ 158470 ?        00:00:00 sftp-server
+ 158478 ?        00:00:00 sshd
+ 158495 ?        00:00:00 sshd
+ 158497 pts/1    00:00:00 bash
+ 158523 ?        00:00:00 sftp-server
+ 161443 ?        00:00:00 kworker/u2:3-events_unbound
+ 161949 ?        00:00:00 kworker/u2:2-events_unbound
+ 161996 ?        00:00:00 kworker/u2:0-flush-252:0
+ 162047 pts/1    00:00:00 top
+ 162051 pts/1    00:00:00 script
+ 162052 pts/2    00:00:00 bash
+ 162066 pts/2    00:00:00 ps
+[?2004h]0;root@prometheus: ~root@prometheus:~# top &
+[?2004l[1] 162067
+[?2004h]0;root@prometheus: ~root@prometheus:~# [?1l>kill 162067
+[?2004l
+[1]+  Stopped                 top
+[?2004h]0;root@prometheus: ~root@prometheus:~# [?2004l
+exit
+There are stopped jobs.
+[?2004h]0;root@prometheus: ~root@prometheus:~# ls
+[?2004lcat2.txt  [0m[01;34mcodeby[0m                               iphone-prometheus.ovpn  openvpn-install.sh      [01;34mPi-hole[0m     result.txt  test.ovpn
+cat.txt   [01;32minstall_prometheus_server_ubuntu.sh[0m  new.txt                 [01;32mopenvpn_xor_install.sh[0m  ps-log.txt  sp.py       [01;32mtraffic_sum.sh[0m
+[?2004h]0;root@prometheus: ~root@prometheus:~# cat ps-log.txt 
+[?2004lScript started on 2025-01-27 17:37:54+05:00 [TERM="xterm" TTY="/dev/pts/1" COLUMNS="201" LINES="57"]
+[?2004h]0;root@prometheus: ~root@prometheus:~# ps ac[Kxu
+[?2004lUSER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.6 167156 12796 ?        Ss   Jan18   0:36 /sbin/init
+root           2  0.0  0.0      0     0 ?        S    Jan18   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   Jan18   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   Jan18   0:00 [rcu_par_gp]
+root           5  0.0  0.0      0     0 ?        I<   Jan18   0:00 [slub_flushwq]
+root           6  0.0  0.0      0     0 ?        I<   Jan18   0:00 [netns]
+root           8  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kworker/0:0H-events_highpri]
+root          10  0.0  0.0      0     0 ?        I<   Jan18   0:00 [mm_percpu_wq]
+root          11  0.0  0.0      0     0 ?        S    Jan18   0:00 [rcu_tasks_rude_]
+root          12  0.0  0.0      0     0 ?        S    Jan18   0:00 [rcu_tasks_trace]
+root          13  0.0  0.0      0     0 ?        S    Jan18   3:30 [ksoftirqd/0]
+root          14  0.0  0.0      0     0 ?        I    Jan18   0:57 [rcu_sched]
+root          15  0.0  0.0      0     0 ?        S    Jan18   0:04 [migration/0]
+root          16  0.0  0.0      0     0 ?        S    Jan18   0:00 [idle_inject/0]
+root          18  0.0  0.0      0     0 ?        S    Jan18   0:00 [cpuhp/0]
+root          19  0.0  0.0      0     0 ?        S    Jan18   0:00 [kdevtmpfs]
+root          20  0.0  0.0      0     0 ?        I<   Jan18   0:00 [inet_frag_wq]
+root          21  0.0  0.0      0     0 ?        S    Jan18   0:00 [kauditd]
+root          22  0.0  0.0      0     0 ?        S    Jan18   0:00 [khungtaskd]
+root          23  0.0  0.0      0     0 ?        S    Jan18   0:00 [oom_reaper]
+root          24  0.0  0.0      0     0 ?        I<   Jan18   0:00 [writeback]
+root          25  0.0  0.0      0     0 ?        S    Jan18   0:31 [kcompactd0]
+root          26  0.0  0.0      0     0 ?        SN   Jan18   0:00 [ksmd]
+root          27  0.0  0.0      0     0 ?        SN   Jan18   0:00 [khugepaged]
+root          73  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kintegrityd]
+root          74  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kblockd]
+root          75  0.0  0.0      0     0 ?        I<   Jan18   0:00 [blkcg_punt_bio]
+root          76  0.0  0.0      0     0 ?        I<   Jan18   0:00 [tpm_dev_wq]
+root          77  0.0  0.0      0     0 ?        I<   Jan18   0:00 [ata_sff]
+root          78  0.0  0.0      0     0 ?        I<   Jan18   0:00 [md]
+root          79  0.0  0.0      0     0 ?        I<   Jan18   0:00 [edac-poller]
+root          80  0.0  0.0      0     0 ?        I<   Jan18   0:00 [devfreq_wq]
+root          81  0.0  0.0      0     0 ?        S    Jan18   0:00 [watchdogd]
+root          83  0.0  0.0      0     0 ?        I<   Jan18   0:24 [kworker/0:1H-kblockd]
+root          85  0.0  0.0      0     0 ?        S    Jan18   0:00 [kswapd0]
+root          86  0.0  0.0      0     0 ?        S    Jan18   0:00 [ecryptfs-kthrea]
+root          88  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kthrotld]
+root          89  0.0  0.0      0     0 ?        I<   Jan18   0:00 [acpi_thermal_pm]
+root          91  0.0  0.0      0     0 ?        S    Jan18   0:00 [scsi_eh_0]
+root          92  0.0  0.0      0     0 ?        I<   Jan18   0:00 [scsi_tmf_0]
+root          93  0.0  0.0      0     0 ?        S    Jan18   0:00 [scsi_eh_1]
+root          94  0.0  0.0      0     0 ?        I<   Jan18   0:00 [scsi_tmf_1]
+root          96  0.0  0.0      0     0 ?        I<   Jan18   0:00 [vfio-irqfd-clea]
+root          97  0.0  0.0      0     0 ?        I<   Jan18   0:00 [mld]
+root          98  0.0  0.0      0     0 ?        I<   Jan18   0:00 [ipv6_addrconf]
+root         109  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kstrp]
+root         112  0.0  0.0      0     0 ?        I<   Jan18   0:00 [zswap-shrink]
+root         113  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kworker/u3:0]
+root         118  0.0  0.0      0     0 ?        I<   Jan18   0:00 [charger_manager]
+root         158  0.0  0.0      0     0 ?        S    Jan18   0:01 [hwrng]
+root         159  0.0  0.0      0     0 ?        I<   Jan18   0:00 [cryptd]
+root         234  0.0  0.0      0     0 ?        I<   Jan18   0:00 [raid5wq]
+root         281  0.0  0.0      0     0 ?        S    Jan18   0:40 [jbd2/vda2-8]
+root         282  0.0  0.0      0     0 ?        I<   Jan18   0:00 [ext4-rsv-conver]
+root         341  0.0  7.2 187280 146424 ?       S<s  Jan18   2:18 /lib/systemd/systemd-journald
+root         370  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kaluad]
+root         372  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kmpath_rdacd]
+root         374  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kmpathd]
+root         375  0.0  0.0      0     0 ?        I<   Jan18   0:00 [kmpath_handlerd]
+root         377  0.0  1.3 289316 27100 ?        SLsl Jan18   1:02 /sbin/multipathd -d -s
+root         381  0.0  0.2  25108  5404 ?        Ss   Jan18   0:00 /lib/systemd/systemd-udevd
+systemd+     433  0.0  0.3  89364  6504 ?        Ssl  Jan18   0:01 /lib/systemd/systemd-timesyncd
+message+     438  0.0  0.2   8768  4652 ?        Ss   Jan18   0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+syslog       445  0.0  0.2 222408  5836 ?        Ssl  Jan18   0:26 /usr/sbin/rsyslogd -n -iNONE
+root         447  0.0  0.4  16348  8496 ?        Ss   Jan18   0:01 /lib/systemd/systemd-logind
+root         448  0.0  0.5 392488 10956 ?        Ssl  Jan18   0:00 /usr/libexec/udisks2/udisksd
+root         481  0.0  0.2 234504  5908 ?        Ssl  Jan18   0:00 /usr/libexec/polkitd --no-debug
+root         486  0.0  0.1  80052  3136 ?        Ssl  Jan18   5:00 /usr/sbin/qemu-ga
+grafana      786  0.1  8.5 1571688 172420 ?      Ssl  Jan18  17:59 /usr/share/grafana/bin/grafana server --config=/etc/grafana/grafana.ini --pidfile=/run/grafana/grafana-server.pid --packaging=deb cfg:
+prometh+     791  0.6  4.7 1751292 96468 ?       Ssl  Jan18  91:19 /usr/bin/prometheus --config.file /etc/prometheus/prometheus.yml --storage.tsdb.path /etc/prometheus/data
+root         794  0.0  2.7 1873756 56100 ?       Ssl  Jan18   7:59 /usr/local/x-ui/x-ui
+root         797  0.0  2.2 1727036 44840 ?       Ssl  Jan18   9:12 /usr/bin/containerd
+root         801  0.0  0.0   6176  1132 tty1     Ss+  Jan18   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+root         855  0.6  2.5 1257240 51436 ?       Sl   Jan18  80:44 bin/xray-linux-amd64 -c bin/config.json
+root         859  0.0  3.7 1840508 76256 ?       Ssl  Jan18   1:07 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+root       99834  0.0  0.4  16952  9240 ?        Ss   Jan24   0:00 /lib/systemd/systemd --user
+root       99836  0.0  0.1 103420  3176 ?        S    Jan24   0:00 (sd-pam)
+root      101257  0.0  0.2   8100  4216 ?        Ss   Jan24   0:00 ssh-agent -s
+root      111339  0.0  0.4  15432  9096 ?        Ss   Jan25   0:08 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root      114799  0.0  0.8 295592 17228 ?        Ssl  Jan26   0:00 /usr/libexec/packagekitd
+systemd+  124716  0.0  0.5  25664 11724 ?        Ss   Jan26   0:00 /lib/systemd/systemd-resolved
+www-data  124725  0.0  0.1   5360  3832 ?        Ss   Jan26   0:08 /usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
+www-data  124758  0.0  1.1 207364 22536 ?        Ss   Jan26   0:00 /usr/bin/php-cgi
+www-data  124759  0.0  0.7 207692 14816 ?        S    Jan26   0:01 /usr/bin/php-cgi
+www-data  124760  0.0  0.8 208200 16868 ?        S    Jan26   0:01 /usr/bin/php-cgi
+www-data  124761  0.0  0.8 208200 16584 ?        S    Jan26   0:01 /usr/bin/php-cgi
+www-data  124762  0.0  0.6 207824 13412 ?        S    Jan26   0:01 /usr/bin/php-cgi
+nobody    125132  0.0  0.3   9948  6532 ?        Ss   Jan26   2:02 /usr/local/sbin/openvpn --daemon --cd /etc/openvpn/ --config /etc/openvpn/server.conf
+pihole    125167  0.0  0.4 616868  8884 ?        S<sl Jan26   2:07 /usr/bin/pihole-FTL -f
+root      125283  0.0  0.1   6896  3032 ?        Ss   Jan26   0:00 /usr/sbin/cron -f -P
+root      146807  0.0  0.0      0     0 ?        I    00:09   0:02 [kworker/0:1-events]
+root      155367  0.0  0.0      0     0 ?        I    10:47   0:11 [kworker/0:0-events]
+root      158425  0.0  0.5  17464 11352 ?        Ss   13:35   0:00 sshd: root@pts/0
+root      158442  0.0  0.5  17152 11212 ?        Ss   13:35   0:00 sshd: root@notty
+root      158444  0.0  0.2   8788  5552 pts/0    Ss+  13:35   0:00 -bash
+root      158470  0.0  0.2   7776  5416 ?        Ss   13:35   0:00 /usr/lib/openssh/sftp-server
+root      158478  0.0  0.5  17464 11464 ?        Ss   13:35   0:00 sshd: root@pts/1
+root      158495  0.0  0.5  17156 11136 ?        Ss   13:35   0:00 sshd: root@notty
+root      158497  0.0  0.2   8920  5668 pts/1    Ss   13:35   0:00 -bash
+root      158523  0.0  0.2   7776  5516 ?        Ss   13:35   0:00 /usr/lib/openssh/sftp-server
+root      161443  0.0  0.0      0     0 ?        I    16:53   0:00 [kworker/u2:3-events_unbound]
+root      161949  0.0  0.0      0     0 ?        I    17:30   0:00 [kworker/u2:2-events_unbound]
+root      161996  0.0  0.0      0     0 ?        I    17:35   0:00 [kworker/u2:0-events_unbound]
+root      162047  0.0  0.1   9952  3572 pts/1    T    17:37   0:00 top
+root      162051  0.0  0.0   5788  1096 pts/1    S+   17:37   0:00 script ps-log.txt
+root      162052  0.0  0.2   7768  4176 pts/2    Ss   17:37   0:00 bash -i
+root      162063  0.0  0.0  10072  1556 pts/2    R+   17:38   0:00 ps axu
+[?2004h]0;root@prometheus: ~root@prometheus:~# ps -u root
+[?2004l    PID TTY          TIME CMD
+      1 ?        00:00:36 systemd
+      2 ?        00:00:00 kthreadd
+      3 ?        00:00:00 rcu_gp
+      4 ?        00:00:00 rcu_par_gp
+      5 ?        00:00:00 slub_flushwq
+      6 ?        00:00:00 netns
+      8 ?        00:00:00 kworker/0:0H-events_highpri
+     10 ?        00:00:00 mm_percpu_wq
+     11 ?        00:00:00 rcu_tasks_
