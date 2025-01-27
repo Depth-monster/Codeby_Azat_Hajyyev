@@ -1,0 +1,23 @@
+Script started on 2025-01-27 22:44:13+05:00 [TERM="xterm" TTY="/dev/pts/3" COLUMNS="201" LINES="57"]
+[?2004h]0;root@prometheus: ~root@prometheus:~# sudo nano /er[Ktc/syste,m[K[Kmd/system/nginx-custom.service 
+[?2004l[?2004h[?1049h[22;0;0t[1;57r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[55;94H(B[0;7m[ Reading... ](B[m[55;93H(B[0;7m[ Read 14 lines ](B[m[H(B[0;7m  GNU nano 6.2                                                                     /etc/systemd/system/nginx-custom.service                                                                              [1;200H(B[m[56d(B[0;7m^G(B[m Help[56;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[56;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[56;113H(B[0;7mM-A(B[m Set Mark    (B[0;7mM-](B[m To Bracket  (B[0;7mM-Q(B[m Previous    (B[0;7m^B(B[m Back[56;177H(B[0;7m^◂(B[m Prev Word[57d(B[0;7m^X(B[m Exit[57;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[57;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[57;113H(B[0;7mM-6(B[m Copy[57;129H(B[0;7m^Q(B[m Where Was    (B[0;7mM-W(B[m Next[57;161H(B[0;7m^F(B[m Forward[177G(B[0;7m^▸(B[m Next Word[2d(B[0;1m[32m[Unit][3d[39m(B[mDescription=Custom Nginx Service[4dAfter=network.target[6d(B[0;1m[32m[Service][7d[39m(B[mExecStart=/usr/sbin/nginx -g 'daemon off;'[8dExecReload=/bin/kill -s HUP $MAINPID[9dExecStop=/bin/kill -s QUIT $MAINPID[10dPIDFile=/run/nginx.pid[11dRestart=always[13d(B[0;1m[32m[Install][14d[39m(B[mWantedBy=multi-user.target[2d[?12l[?25h[?25l[55d[J[57d[?12l[?25h[57;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;root@prometheus: ~root@prometheus:~# sudo systemctl daemon reload[1Preload-reload
+[?2004l[?2004h]0;root@prometheus: ~root@prometheus:~# sudo systemctl enb[Kabel [K[K[Kle ngoi[K[Kinx-custom.service
+[?2004l[?2004h]0;root@prometheus: ~root@prometheus:~# sudo systemctl enable nginx-custom.service[14Pdaemon-reloadnano /etc/systemd/system/nginx-custom.service [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[13Pupdate-alternatives --config java[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[24Pjava --versionsudo update-alternatives --config java[?2004l[?2004h[?2004l
+[?2004h]0;root@prometheus: ~root@prometheus:~# systemctl start nginx-log.txt [K[K[K[K[K[K[K[Kcu[K[Ku[Kcustom.service
+[?2004l[?2004h]0;root@prometheus: ~root@prometheus:~# systemctl start nginx-custom.service[1P nginx-custom.service[1P nginx-custom.service[1P nginx-custom.service[1P nginx-custom.service[1P nginx-custom.services nginx-custom.servicet nginx-custom.servicea nginx-custom.servicet nginx-custom.serviceu nginx-custom.services nginx-custom.service
+[?2004l[?1h=[0;1;32m●[0m nginx-custom.service - Custom Nginx Service[m
+     Loaded: loaded (/etc/systemd/system/nginx-custom.service; enabled; vendor preset: enabled)[m
+     Active: [0;1;32mactive (running)[0m since Mon 2025-01-27 22:43:09 +05; 2min 37s ago[m
+   Main PID: 172919 (nginx)[m
+      Tasks: 2 (limit: 2226)[m
+     Memory: 2.5M[m
+        CPU: 9ms[m
+     CGroup: /system.slice/nginx-custom.service[m
+             ├─172919 "nginx: master process /usr/sbin/nginx -g daemon off;"[m
+             └─172920 "nginx: worker process" "" "" "" "" "" "" "" "" ""[m
+[m
+Jan 27 22:43:09 prometheus.aeza.network systemd[1]: Started Custom Nginx Service.[m
+[K[?1l>[?2004h]0;root@prometheus: ~root@prometheus:~# [?2004l
+exit
+
+Script done on 2025-01-27 22:45:54+05:00 [COMMAND_EXIT_CODE="0"]
