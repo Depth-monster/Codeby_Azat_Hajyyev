@@ -1,0 +1,14 @@
+[Unit]
+Description=Custom Nginx Service
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/nginx -g 'daemon off;'
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PIDFile=/run/nginx.pid
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
