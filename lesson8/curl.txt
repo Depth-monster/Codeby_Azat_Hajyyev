@@ -1,0 +1,30 @@
+Script started on 2025-02-08 19:49:52+03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="101" LINES="59"]
+                                                                                                     ]0;root@agent-green: /home/cobalt-strike/codeby_cloned/Codeby_Azat_Hajyyev/lesson8[0m[27m[24m[J[34m┌──([1m[34m[31mroot㉿agent-green[0m[31m[34m)-[[1m[34m[39m/home/cobalt-strike/codeby_cloned/Codeby_Azat_Hajyyev/lesson8[0m[34m]
+└─[1m[34m[31m#[0m[31m[39m [K[?1h=[?2004h[1mc[0m[1mc[0m[38;2;153;153;153mat [39m[1mc[39m[1mu[0m[39m [39m [38;2;153;153;153mrl -v https://name.local[39m[24D[1mc[1mu[39m[1mr[0m[0m[36mc[0m[36mu[0m[36mr[36ml[39m[39m [39mn[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [20Dae me.local[?1l>[?2004l
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="https://name.local/">here</a>.</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at name.local Port 80</address>
+</body></html>
+                                                                                                     ]0;root@agent-green: /home/cobalt-strike/codeby_cloned/Codeby_Azat_Hajyyev/lesson8
+[0m[27m[24m[J[34m┌──([1m[34m[31mroot㉿agent-green[0m[31m[34m)-[[1m[34m[39m/home/cobalt-strike/codeby_cloned/Codeby_Azat_Hajyyev/lesson8[0m[34m]
+└─[1m[34m[31m#[0m[31m[39m [K[?1h=[?2004h[1mc[0m[1mc[0m[38;2;153;153;153murl name.local[39m[14D[1mc[39m[1mu[0m[1mc[1mu[39m[1mr[0m[0m[36mc[0m[36mu[0m[36mr[36ml[39m[39m [32m-[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [9D[38;2;153;153;153mv https://name.local[39m[20D[32m-[32mi[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [19D[32m-[39m[39m [38;2;153;153;153mv https://name.local[39m[20D[32m-[32mI[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [19D[38;2;153;153;153m https://name.local[39m[19D[39m [39mh[39mt[39mt[39mp[39ms[39m:[39m/[39m/[39mn[39ma[39mm[39me[39m.[39ml[39mo[39mc[39ma[39ml[?1l>[?2004l
+HTTP/1.1 200 OK
+[1mDate[0m: Sat, 08 Feb 2025 16:50:10 GMT
+[1mServer[0m: Apache/2.4.41 (Ubuntu)
+[1mLast-Modified[0m: Sat, 08 Feb 2025 11:18:18 GMT
+[1mETag[0m: "2aa6-62d9fa1d7561f"
+[1mAccept-Ranges[0m: bytes
+[1mContent-Length[0m: 10918
+[1mVary[0m: Accept-Encoding
+[1mContent-Type[0m: text/html
+
+                                                                                                     ]0;root@agent-green: /home/cobalt-strike/codeby_cloned/Codeby_Azat_Hajyyev/lesson8
+[0m[27m[24m[J[34m┌──([1m[34m[31mroot㉿agent-green[0m[31m[34m)-[[1m[34m[39m/home/cobalt-strike/codeby_cloned/Codeby_Azat_Hajyyev/lesson8[0m[34m]
+└─[1m[34m[31m#[0m[31m[39m [K[?1h=[?2004h[?2004l
+
+Script done on 2025-02-08 19:50:21+03:00 [COMMAND_EXIT_CODE="0"]
