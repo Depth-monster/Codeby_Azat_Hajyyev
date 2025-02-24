@@ -1,6 +1,33 @@
 ---
 - name: Install required packages and configure Nginx
-  hosts: all
+  hosts: dev
+  become: yes  # Запуск от root
+
+  vars:
+    env: "{{ hostvars[inventory_hostname].env | default('unknown') }}"  # Определение окружения
+
+  tasks:
+    - name: Install required packages
+      ansible.builtin.apt:
+        name:
+          - wget
+          - htop
+          - nginx
+        state: present
+        update_cache: yes
+
+    - name: Start and enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Display environment info
+      ansible.builtin.debug:
+        msg: "This host is in {{ env }} environment"
+
+- name: Install required packages and configure Nginx
+  hosts: prod
   become: yes  # Запуск от root
 
   vars:
