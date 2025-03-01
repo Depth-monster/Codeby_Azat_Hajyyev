@@ -1,0 +1,15 @@
+---
+mysql_root_password: "Ejenamy71241."
+mysql_db_name: "wordpress"
+mysql_user: "wp_user"
+mysql_password: "Ejenamy71241."
+
+# Packages for RedHat/CentOS (MariaDB)
+mysql_packages_redhat:
+  - mariadb-server
+  - mariadb
+
+# Packages for Debian/Ubuntu
+mysql_packages_debian:
+  - mysql-server
+  - mysql-client

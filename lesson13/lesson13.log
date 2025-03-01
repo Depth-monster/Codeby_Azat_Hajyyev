@@ -1,0 +1,34 @@
+.
+├── ansible
+│   ├── ansible.cfg
+│   ├── inventory
+│   │   └── hosts
+│   ├── roles
+│   │   ├── apache
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       └── wordpress_vhost.conf.j2
+│   │   ├── mysql
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   └── tasks
+│   │   │       ├── backup.yml
+│   │   │       └── main.yml
+│   │   └── wordpress
+│   │       ├── defaults
+│   │       │   └── main.yml
+│   │       ├── handlers
+│   │       │   └── main.yml
+│   │       ├── tasks
+│   │       │   └── main.yml
+│   │       └── templates
+│   │           └── wp-config.php.j2
+│   └── wpserver-provision.yml
+└── lesson13.log
+
+17 directories, 15 files

@@ -1,0 +1,29 @@
+---
+- name: Установить Apache и PHP (RedHat/CentOS)
+  yum:
+    name: "{{ apache_packages_redhat }}"
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Установить Apache и PHP (Debian/Ubuntu)
+  apt:
+    name: "{{ apache_packages_debian }}"
+    state: present
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+
+- name: Обеспечить запуск и автозапуск Apache
+  service:
+    name: "{{ 'apache_service_redhat' if ansible_os_family == 'RedHat' else apache_service_debian }}"
+    state: started
+    enabled: yes
+
+- name: Enable Apache rewrite module
+  command: a2enmod rewrite
+  when: ansible_os_family == "Debian"
+
+- name: Deploy Apache VirtualHost configuration
+  template:
+    src: wordpress_vhost.conf.j2
+    dest: /etc/apache2/sites-available/000-default.conf
+  notify: Restart Apache
