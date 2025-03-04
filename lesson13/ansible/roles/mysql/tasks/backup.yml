@@ -1,0 +1,55 @@
+- hosts: web
+  become: yes
+  tasks:
+    # Debian/Ubuntu: обновляем кэш apt
+    - name: Обновить кэш apt (Debian/Ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    # Debian/Ubuntu: установка pip3
+    - name: Установить pip3 (Debian/Ubuntu)
+      apt:
+        name: python3-pip
+        state: present
+      when: ansible_os_family == "Debian"
+
+    # Debian/Ubuntu: установка зависимостей для сборки mysqlclient
+    - name: Установить зависимости для сборки mysqlclient (Debian/Ubuntu)
+      apt:
+        name:
+          - python3-dev
+          - default-libmysqlclient-dev
+          - build-essential
+        state: present
+      when: ansible_os_family == "Debian"
+
+    # RedHat/CentOS: установка pip3
+    - name: Установить pip3 (RedHat/CentOS)
+      yum:
+        name: python3-pip
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    # RedHat/CentOS: установка зависимостей для сборки mysqlclient
+    - name: Установить зависимости для сборки mysqlclient (RedHat/CentOS)
+      yum:
+        name:
+          - python3-devel
+          - mysql-devel
+          - gcc
+          - make
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    # Установка mysqlclient через pip (для всех систем)
+    - name: Установить mysqlclient через pip3
+      pip:
+        name: mysqlclient
+        executable: pip3
+
+    # Установка PyMySQL через pip (для всех систем)
+    - name: Установить PyMySQL через pip3
+      pip:
+        name: PyMySQL
+        executable: pip3

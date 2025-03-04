@@ -1,0 +1,39 @@
+---
+# Для RedHat/CentOS:
+apache_packages_redhat:
+  - httpd
+  - php
+  - php-mysqlnd
+  - php-cli
+  - php-common
+  - php-gd
+  - php-xml
+  - php-xmlrpc
+  - php-soap
+  - php-mbstring
+  - php-json
+  - php-intl
+  - php-zip
+
+apache_service_redhat: "httpd"
+document_root_redhat: "/var/www/html"
+
+# Для Debian/Ubuntu:
+apache_packages_debian:
+  - apache2
+  - php
+  - php-mysql
+  - libapache2-mod-php
+  - php-cli
+  - php-common
+  - php-gd
+  - php-xml
+  - php-xmlrpc
+  - php-soap
+  - php-mbstring
+  - php-json
+  - php-intl
+  - php-zip
+
+apache_service_debian: "apache2"
+document_root_debian: "/var/www/html"

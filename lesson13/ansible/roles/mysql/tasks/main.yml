@@ -1,0 +1,151 @@
+---
+# Блок подготовки: установка pip3 и зависимостей для сборки Python-модуля mysqlclient
+
+- name: Подготовка системы для установки MySQL Python-модулей (Debian/Ubuntu)
+  block:
+    - name: Обновить кэш apt
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Установить pkg-config (Debian/Ubuntu)
+      apt:
+        name: pkg-config
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Установить pip3 (Debian/Ubuntu)
+      apt:
+        name: python3-pip
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Установить зависимости для сборки mysqlclient (Debian/Ubuntu)
+      apt:
+        name:
+          - python3-dev
+          - default-libmysqlclient-dev
+          - build-essential
+        state: present
+  when: ansible_os_family == "Debian"
+
+   # - name: становить pkgconf (RedHat/Centos)
+    #  yum:
+     #   name: pkgconf
+      #  state: present
+      #when: ansible_os_family == "RedHat"
+
+
+- name: Подготовка системы для установки MySQL Python-модулей (RedHat/CentOS)
+  block:
+    - name: Установить pip3 (RedHat/CentOS)
+      yum:
+        name: python3-pip
+        state: present
+
+    - name: Установить зависимости для сборки mysqlclient (RedHat/CentOS)
+      yum:
+        name:
+          - python3-devel
+          - mysql-devel
+          - gcc
+          - make
+        state: present
+  when: ansible_os_family == "RedHat"
+
+# Установка Python-модулей mysqlclient и PyMySQL через pip3 (для всех систем)
+
+- name: Установить mysqlclient через pip3
+  pip:
+    name: mysqlclient
+    executable: pip3
+
+- name: Установить PyMySQL через pip3
+  pip:
+    name: PyMySQL
+    executable: pip3
+
+# Установка MySQL/MariaDB пакетов в зависимости от ОС
+
+- name: Установить MySQL пакеты (RedHat/CentOS)
+  yum:
+    name: "{{ mysql_packages_redhat }}"
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Установить MySQL пакеты (Debian/Ubuntu)
+  apt:
+    name: "{{ mysql_packages_debian }}"
+    state: present
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+
+# Обеспечиваем запуск MySQL/MariaDB сервиса
+
+- name: Обеспечить запуск и автозапуск MySQL сервиса
+  service:
+    name: "{{ 'mariadb' if ansible_os_family == 'RedHat' else 'mysql' }}"
+    state: started
+    enabled: yes
+
+# Настройка root-пароля MySQL
+
+- name: Установить MySQL root пароль (RedHat/CentOS)
+  mysql_user:
+    name: root
+    host: "{{ item }}"
+    password: "{{ mysql_root_password }}"
+    check_implicit_admin: yes
+    login_user: root
+    login_password: "{{ mysql_root_password  }}"
+    login_unix_socket: /var/lib/mysql/mysql.sock
+    state: present
+  with_items:
+    - "localhost"
+    - "127.0.0.1"
+    - "::1"
+  when: ansible_os_family == "RedHat"
+
+- name: Установить MySQL root пароль (Debian/Ubuntu)
+  mysql_user:
+    name: root
+    host: "localhost"
+    password: "{{ mysql_root_password }}"
+    check_implicit_admin: yes
+    login_user: root
+    login_password: "{{ mysql_root_password  }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    state: present
+  when: ansible_os_family == "Debian"
+
+# Создание базы данных для WordPress
+
+- name: Создать базу данных WordPress(Debian)
+  mysql_db:
+    name: "{{ mysql_db_name }}"
+    state: present
+    login_user: root
+    login_password: "{{ mysql_root_password  }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  when: ansible_os_family == "Debian"
+
+- name: Создать базу данных WordPress (RedHat/CentOS)
+  mysql_db:
+    name: "{{ mysql_db_name }}"
+    state: present
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    login_unix_socket: /var/lib/mysql/mysql.sock
+  when: ansible_os_family == "RedHat"
+
+# Создание MySQL пользователя для WordPress с соответствующими привилегиями
+
+- name: Создать MySQL пользователя для WordPress
+  mysql_user:
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
+    login_user: root
+    login_password: "{{ mysql_root_password  }}"
+    priv: "{{ mysql_db_name }}.*:ALL"
+    host: "%"
+    state: present

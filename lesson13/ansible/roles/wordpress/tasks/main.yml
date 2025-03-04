@@ -1,0 +1,62 @@
+---
+- name: Download WordPress archive
+  get_url:
+    url: "{{ wp_download_url  }}"
+    dest: "/tmp/wordpress.tar.gz"
+
+
+- name: Create a WordPress catalog (RedHat/CentOS)
+  file:
+    path: "{{ wp_docroot_redhat  }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  when: ansible_os_family == "RedHat"
+
+
+- name: Create catalog for Wordpress (Ubuntu/Debian)
+  file:
+   path: "{{ wp_docroot_debian  }}"
+   state: directory
+   owner: root
+   group: root
+   mode: '0755'
+  when: ansible_os_family == "Debian"
+
+
+- name: Распаковать WordPress (RedHat/CentOS)
+  unarchive:
+    src: "/tmp/wordpress.tar.gz"
+    dest: "{{ wp_docroot_redhat }}"
+    remote_src: yes
+    creates: "{{ wp_docroot_redhat }}/wp-admin"
+  when: ansible_os_family == "RedHat"
+
+- name: Распаковать WordPress (Debian/Ubuntu)
+  unarchive:
+    src: "/tmp/wordpress.tar.gz"
+    dest: "{{ wp_docroot_debian }}"
+    remote_src: yes
+    creates: "{{ wp_docroot_debian }}/wp-admin"
+  when: ansible_os_family == "Debian"
+
+- name: Настроить wp-config.php (RedHat/CentOS)
+  template:
+    src: "wp-config.php.j2"
+    dest: "{{ wp_docroot_redhat }}/wp-config.php"
+    owner: apache
+    group: apache
+    mode: '0644'
+  notify: Restart apache
+  when: ansible_os_family == "RedHat"
+
+- name: Настроить wp-config.php (Debian/Ubuntu)
+  template:
+    src: "wp-config.php.j2"
+    dest: "{{ wp_docroot_debian }}/wp-config.php"
+    owner: www-data
+    group: www-data
+    mode: '0644'
+  notify: Restart apache
+  when: ansible_os_family == "Debian"
