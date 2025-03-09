@@ -1,0 +1,74 @@
+Script started on 2025-03-09 22:57:07+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="201" LINES="57"]
+[?2004h]0;ubuntu@ip-172-31-81-183: ~/terraformubuntu@ip-172-31-81-183:~/terraform$ r[Ktree
+[?2004l[01;34m.[0m
+├── aws-first.pem
+├── check.log
+├── generated1.tf
+├── import.tf
+├── main.tf
+├── main.tf.save
+├── [01;34mmodules[0m
+│   └── [01;34mvpc[0m
+│       ├── data.tf
+│       ├── main.tf
+│       ├── outputs.tf
+│       └── variables.tf
+├── outputs.tf
+├── terraform.tfstate
+├── terraform.tfstate.backup
+└── variables.tf
+
+2 directories, 14 files
+[?2004h]0;ubuntu@ip-172-31-81-183: ~/terraformubuntu@ip-172-31-81-183:~/terraform$ terraform apply
+[?2004l[0m[1mdata.aws_availability_zones.available: Reading...[0m[0m
+[0m[1maws_instance.for_import: Refreshing state... [id=i-0b838758a590beea8][0m
+[0m[1mdata.aws_vpc.default: Reading...[0m[0m
+[0m[1mdata.aws_ami.ubuntu: Reading...[0m[0m
+[0m[1mmodule.vpc_subnets.data.aws_vpc.selected: Reading...[0m[0m
+[0m[1mdata.aws_availability_zones.available: Read complete after 0s [id=us-east-1][0m
+[0m[1mdata.aws_ami.ubuntu: Read complete after 0s [id=ami-0f9de6e2d2f067fca][0m
+[0m[1mmodule.vpc_subnets.data.aws_vpc.selected: Read complete after 0s [id=vpc-0b7389621b5a1bf46][0m
+[0m[1mmodule.vpc_subnets.data.aws_subnets.all: Reading...[0m[0m
+[0m[1mdata.aws_vpc.default: Read complete after 0s [id=vpc-0b7389621b5a1bf46][0m
+[0m[1maws_security_group.sg_private: Refreshing state... [id=sg-0c22ceec608053af6][0m
+[0m[1maws_subnet.private: Refreshing state... [id=subnet-0ad1dec07c8e17eee][0m
+[0m[1maws_subnet.public: Refreshing state... [id=subnet-0b9179f8c13e1db56][0m
+[0m[1maws_security_group.sg_public: Refreshing state... [id=sg-0cab4c4efec748820][0m
+[0m[1mmodule.vpc_subnets.data.aws_subnets.all: Read complete after 0s [id=us-east-1][0m
+[0m[1mmodule.vpc_subnets.data.aws_subnet.details["subnet-030f68f784ba3ec69"]: Reading...[0m[0m
+[0m[1mmodule.vpc_subnets.data.aws_subnet.details["subnet-0ad1dec07c8e17eee"]: Reading...[0m[0m
+[0m[1mmodule.vpc_subnets.data.aws_subnet.details["subnet-0b9179f8c13e1db56"]: Reading...[0m[0m
+[0m[1mmodule.vpc_subnets.data.aws_subnet.details["subnet-0b9179f8c13e1db56"]: Read complete after 0s [id=subnet-0b9179f8c13e1db56][0m
+[0m[1maws_instance.public_instance: Refreshing state... [id=i-0554b21fdfb1ff370][0m
+[0m[1mmodule.vpc_subnets.data.aws_subnet.details["subnet-0ad1dec07c8e17eee"]: Read complete after 0s [id=subnet-0ad1dec07c8e17eee][0m
+[0m[1mmodule.vpc_subnets.data.aws_subnet.details["subnet-030f68f784ba3ec69"]: Read complete after 0s [id=subnet-030f68f784ba3ec69][0m
+[0m[1mmodule.vpc_subnets.aws_instance.vm[0]: Refreshing state... [id=i-06cab07b5de00ce1d][0m
+[0m[1maws_instance.private_instance: Refreshing state... [id=i-0eb7de4612a95b13c][0m
+
+[0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+
+[0mTerraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed.
+[0m[1m[32m
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+[0m[0m[1m[32m
+Outputs:
+
+[0mall_subnet_id = tolist([
+  "subnet-0ad1dec07c8e17eee",
+  "subnet-030f68f784ba3ec69",
+  "subnet-0b9179f8c13e1db56",
+])
+new_instance_id = "i-06cab07b5de00ce1d"
+new_instance_public_ip = "34.229.112.89"
+private_instance_id = "i-0eb7de4612a95b13c"
+private_instance_public_ip = "44.223.102.138"
+private_subnet_id = "subnet-0ad1dec07c8e17eee"
+public_imported_id = "i-0b838758a590beea8"
+public_imported_public_ip = "18.212.56.138"
+public_instance_id = "i-0554b21fdfb1ff370"
+public_instance_public_ip = "98.81.209.91"
+public_subnet_id = "subnet-0b9179f8c13e1db56"
+[?2004h]0;ubuntu@ip-172-31-81-183: ~/terraformubuntu@ip-172-31-81-183:~/terraform$ [?2004l
+exit
+
+Script done on 2025-03-09 22:57:35+00:00 [COMMAND_EXIT_CODE="0"]
