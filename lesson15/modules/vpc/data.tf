@@ -1,5 +1,5 @@
 data "aws_vpc" "selected" {
-  id = var.vpc_id
+  default = true
 }
 
 data "aws_subnets" "all" {
@@ -14,6 +14,8 @@ data "aws_subnet" "details" {
   id       = each.value
 }
 
-locals {
-  selected_subnet = [for s in data.aws_subnet.details : s.id if s.availability_zone == var.instance_zone]
-}
+
+#locals {
+#  selected_subnet = [for s in data.aws_subnet.details : s.id if s.availability_zone == var.instance_zone]
+#}
+
