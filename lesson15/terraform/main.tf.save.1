@@ -1,0 +1,23 @@
+# Setting a providers region
+provider "aws" {
+  region = var.aws_region
+}
+
+# Module for getting info about subnets
+module "vpc_subnets" {
+  source = "./modules/vpc"
+  aws_region = var.aws_region
+  vpc_id = data.aws_vpc.default.id
+}
+
+locals {
+  selected_subnet = { 
+    for k, v in module.vpc_subnets.subnets_info : k => v if v.availability_zone == var.selected_zone
+  }
+}
+
+# Calling a modulf
+module "compute_instance" {
+  source    = "./modules/compute_instance"
+  subnet_id = local.selected_subnet != null ? local.selected_subnet.id : null
+}
