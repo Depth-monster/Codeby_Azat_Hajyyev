@@ -1,8 +1,10 @@
 #
-variable "subnet_ids" {
-  description = "List of all subnets"
-  type        = list(string)
+
+variable "subnet_id" {
+  description = "The subnet ID where the VM should be created"
+  type        = string
 }
+
 
 variable "instance_zone" {
   description = "Availability zones on which vm should be created"
@@ -14,3 +16,4 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
+

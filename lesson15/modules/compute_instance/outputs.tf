@@ -1,14 +1,14 @@
 output "instance_id" {
   description = "ID созданного EC2-инстанса"
-  value       = length(aws_instance.vm) > 0 ? aws_instance.vm[0].id : null
+  value       = aws_instance.vm.id
 }
 
 output "instance_public_ip" {
   description = "Публичный IP EC2-инстанса"
-  value       = length(aws_instance.vm) > 0 ? aws_instance.vm[0].public_ip : null
+  value       = aws_instance.vm.public_ip
 }
 
 output "selected_subnet_id" {
   description = "ID выбранной подсети"
-  value       = length(local.selected_subnet) > 0 ? local.selected_subnet[0] : null
+  value       = aws_instance.vm.public_ip
 }

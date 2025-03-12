@@ -1,13 +1,13 @@
-#main
-
-resource "aws_instance" "vm" {
-  count             = length(local.selected_subnet) > 0 ? 1 : 0
-  ami               = var.ami_id
-  instance_type     = var.instance_type
-  subnet_id         = length(local.selected_subnet) > 0 ? local.selected_subnet[0] : null
-  availability_zone = var.instance_zone
-
-  tags = {
-    Name = "VM-${var.instance_zone}"
+# Получаем все подсети в VPC
+data "aws_subnets" "all" {
+  filter {
+    name   = "vpc-id"
+    values = [var.vpc_id]
   }
+}
+
+# Получаем информацию о каждой подсети
+data "aws_subnet" "details" {
+  for_each = toset(data.aws_subnets.all.ids)
+  id       = each.value
 }
