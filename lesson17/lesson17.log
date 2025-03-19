@@ -1,0 +1,47 @@
+root@ubuntu-s-1vcpu-1gb-35gb-intel-fra1-01:~# bash wp.sh
+7659b13967d9d3cb48fdeed750e9603ad4bf3222c0b9c8f43fe93ab2f40b907c
+wp-db
+wp-data
+Unable to find image 'mysql:5.7' locally
+5.7: Pulling from library/mysql
+20e4dcae4c69: Pull complete
+1c56c3d4ce74: Pull complete
+e9f03a1c24ce: Pull complete
+68c3898c2015: Pull complete
+6b95a940e7b6: Pull complete
+90986bb8de6e: Pull complete
+ae71319cb779: Pull complete
+ffc89e9dfd88: Pull complete
+43d05e938198: Pull complete
+064b2d298fba: Pull complete
+df9a4d85569b: Pull complete
+Digest: sha256:4bc6bc963e6d8443453676cae56536f4b8156d78bae03c0145cbe47c2aad73bb
+Status: Downloaded newer image for mysql:5.7
+41cc0d433a78881f11de5ad2f23f538481df664fc9d69d9597a015255ac43b17
+Unable to find image 'wordpress:latest' locally
+latest: Pulling from library/wordpress
+6e909acdb790: Pull complete
+5db2c4b6137b: Pull complete
+dacb60b59038: Pull complete
+64450047668b: Pull complete
+4d6386e035f7: Pull complete
+e4ca7ebe0914: Pull complete
+3dc5d9089396: Pull complete
+1778f52baa09: Pull complete
+a5d9cb1c80ec: Pull complete
+b116c8459f57: Pull complete
+8f8ddda3587a: Pull complete
+f432ea27fc70: Pull complete
+6a5a37a900f3: Pull complete
+4f4fb700ef54: Pull complete
+57c6ea19af98: Pull complete
+ae777a0ca433: Pull complete
+5f19650adea9: Pull complete
+177323f85a94: Pull complete
+fe638a1d1db7: Pull complete
+f4abcace8187: Pull complete
+729bf49a9314: Pull complete
+cac8b814902b: Pull complete
+Digest: sha256:8b0ffd461bfaf8e74ab98481f45d1b2596986767faf2dc65bb47c875076f8a14
+Status: Downloaded newer image for wordpress:latest
+b5a017daf3ddf1ed735c01ce5405477f63b29e301c6be4a7c95710badeed40ee
