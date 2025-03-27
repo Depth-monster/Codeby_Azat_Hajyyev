@@ -1,0 +1,72 @@
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# kubectl cluster-info
+Kubernetes control plane is running at https://127.0.0.1:34385
+CoreDNS is running at https://127.0.0.1:34385/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# minikube status                                                                                 
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# kubectl run nginx-pod1 \
+> --image=nginx \
+> --restart=Never \
+> --namespace=codeby
+pod/nginx-pod1 created
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# kubectl get pods -n codeby 
+NAME         READY   STATUS    RESTARTS   AGE
+nginx-pod1   1/1     Running   0          16s
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# ls                                                                                              
+declarative  docker  imperative_conf  kind  kubectl  minikube  nginx-pod.yaml
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# kubectl run nginx-pod2 --image=nginx --restart=Never \
+> --namespace=codeby \
+> --dry-run=client -o yaml > nginx-pod.yaml
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# kubectl apply -f nginx-pod.yaml                                                                 
+pod/nginx-pod2 created
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# kubectl get pod -n codeby 
+NAME         READY   STATUS    RESTARTS   AGE
+nginx-pod1   1/1     Running   0          2m15s
+nginx-pod2   1/1     Running   0          10s
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# cat declarative/nginx-pod-declarative.yaml                                                      
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod3
+  namespace: codeby
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# kubectl apply -f declarative/nginx-pod-declarative.yaml                                         
+pod/nginx-pod3 created
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─# kubectl get pod -n codeby                                         
+NAME         READY   STATUS    RESTARTS   AGE
+nginx-pod1   1/1     Running   0          3m20s
+nginx-pod2   1/1     Running   0          75s
+nginx-pod3   1/1     Running   0          4s
+
+┌──(root㉿agent-green)-[/home/cobalt-strike/k8s]
+└─#         
