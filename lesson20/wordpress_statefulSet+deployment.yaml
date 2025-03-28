@@ -1,0 +1,112 @@
+# Создаём namespace dev
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+---
+# Сервис для MySQL (ClusterIP)
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: dev
+spec:
+  type: ClusterIP
+  selector:
+    app: mysql
+  ports:
+    - name: mysql
+      port: 3306
+      targetPort: 3306
+---
+# StatefulSet для MySQL
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  namespace: dev
+spec:
+  serviceName: mysql-service  # связываем StatefulSet с сервисом
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: password
+          - name: MYSQL_DATABASE
+            value: wordpress     # база, которую создаст MySQL
+          - name: MYSQL_USER
+            value: wpuser        # пользователь для WordPress
+          - name: MYSQL_PASSWORD
+            value: wppassword    # пароль пользователя
+        ports:
+          - containerPort: 3306
+        volumeMounts:
+          - name: mysql-persistent-storage
+            mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-persistent-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        # при необходимости указать storageClassName
+        # storageClassName: "standard"
+        resources:
+          requests:
+            storage: 1Gi
+---
+# Deployment для WordPress
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress:6.1-apache
+        env:
+          - name: WORDPRESS_DB_HOST
+            value: mysql-service   # имя сервиса MySQL
+          - name: WORDPRESS_DB_USER
+            value: wpuser
+          - name: WORDPRESS_DB_PASSWORD
+            value: wppassword
+          - name: WORDPRESS_DB_NAME
+            value: wordpress
+        ports:
+          - containerPort: 80
+---
+# Сервис для WordPress (NodePort)
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+  namespace: dev
+spec:
+  type: NodePort
+  selector:
+    app: wordpress
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080   # можно указать любой свободный порт в диапазоне 30000-32767
+
