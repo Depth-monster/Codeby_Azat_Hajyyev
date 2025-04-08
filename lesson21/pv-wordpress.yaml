@@ -1,0 +1,22 @@
+---
+# pv-wordpress.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-wordpress
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-storage
+  local:
+    path: /mnt/wordpress
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - i-0745cacfcef3a2325
