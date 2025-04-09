@@ -1,0 +1,63 @@
+ubuntu@ip-172-31-81-183:~/dz21$ kubectl get pods -n dev -o wide
+NAME                         READY   STATUS    RESTARTS   AGE   IP             NODE                  NOMINATED NODE   READINESS GATES
+mysql-0                      1/1     Running   0          14s   100.96.1.29    i-049c5b840383c4e62   <none>           <none>
+wordpress-6dfbd6d95c-cwgzj   1/1     Running   0          64m   100.96.3.115   i-0745cacfcef3a2325   <none>           <none>
+ubuntu@ip-172-31-81-183:~/dz21$ kubectl get pvc -n dev
+kubectl get pv
+NAME            STATUS   VOLUME         CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE
+mysql-pvc       Bound    pv-mysql       1Gi        RWO            local-storage   <unset>                 10m
+wordpress-pvc   Bound    pv-wordpress   1Gi        RWO            local-storage   <unset>                 10m
+NAME           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM               STORAGECLASS    VOLUMEATTRIBUTESCLASS   REASON   AGE
+pv-mysql       1Gi        RWO            Retain           Bound    dev/mysql-pvc       local-storage   <unset>                          10m
+pv-wordpress   1Gi        RWO            Retain           Bound    dev/wordpress-pvc   local-storage   <unset>                          10m
+ubuntu@ip-172-31-81-183:~/dz21$ kubectl get pods
+No resources found in default namespace.
+ubuntu@ip-172-31-81-183:~/dz21$ kubectl get pods -n dev
+NAME                         READY   STATUS    RESTARTS   AGE
+mysql-0                      1/1     Running   0          95s
+wordpress-6dfbd6d95c-cwgzj   1/1     Running   0          65m
+ubuntu@ip-172-31-81-183:~/dz21$ kubectl get nodes -o wide
+NAME                  STATUS   ROLES           AGE   VERSION   INTERNAL-IP     EXTERNAL-IP      OS-IMAGE             KERNEL-VERSION   CONTAINER-RUNTIME
+i-049c5b840383c4e62   Ready    node            70m   v1.31.7   172.20.28.138   44.204.26.100    Ubuntu 22.04.5 LTS   6.8.0-1024-aws   containerd://1.7.25
+i-062fa56eb5a8a723a   Ready    control-plane   75m   v1.31.7   172.20.32.62    18.234.201.121   Ubuntu 22.04.5 LTS   6.8.0-1024-aws   containerd://1.7.25
+i-0745cacfcef3a2325   Ready    node            66m   v1.31.7   172.20.28.81    54.172.128.183   Ubuntu 22.04.5 LTS   6.8.0-1024-aws   containerd://1.7.25
+ubuntu@ip-172-31-81-183:~/dz21$ сгкд
+ubuntu@ip-172-31-81-183:~/dz21$ curl 2ip.ru
+44.201.83.161
+ubuntu@ip-172-31-81-183:~/dz21$
+ubuntu@ip-172-31-81-183:~/dz21$ kubectl get storageclass
+NAME                      PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+default                   kubernetes.io/aws-ebs          Delete          Immediate              false                  5h24m
+gp2                       kubernetes.io/aws-ebs          Delete          Immediate              false                  5h24m
+kops-csi-1-21 (default)   ebs.csi.aws.com                Delete          WaitForFirstConsumer   true                   5h24m
+kops-ssd-1-17             kubernetes.io/aws-ebs          Delete          WaitForFirstConsumer   true                   5h24m
+local-storage             kubernetes.io/no-provisioner   Delete          WaitForFirstConsumer   false                  126m
+ubuntu@ip-172-31-81-183:~/dz21$ kubectl get pv -o wide
+NAME           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM               STORAGECLASS    VOLUMEATTRIBUTESCLASS   REASON   AGE   VOLUMEMODE
+pv-mysql       1Gi        RWO            Retain           Bound    dev/mysql-pvc       local-storage   <unset>                          15m   Filesystem
+pv-wordpress   1Gi        RWO            Retain           Bound    dev/wordpress-pvc   local-storage   <unset>                          15m   Filesystem
+ubuntu@ip-172-31-81-183:~/dz21$ kubectl get pv pv-mysql -o yaml | grep kubernetes.io/hostname -A 2
+kubectl get pv pv-wordpress -o yaml | grep kubernetes.io/hostname -A 2
+      {"apiVersion":"v1","kind":"PersistentVolume","metadata":{"annotations":{},"name":"pv-mysql"},"spec":{"accessModes":["ReadWriteOnce"],"capacity":{"storage":"1Gi"},"local":{"path":"/mnt/mysql"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["i-049c5b840383c4e62"]}]}]}},"storageClassName":"local-storage"}}
+    pv.kubernetes.io/bound-by-controller: "yes"
+  creationTimestamp: "2025-04-08T19:47:07Z"
+--
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+      {"apiVersion":"v1","kind":"PersistentVolume","metadata":{"annotations":{},"name":"pv-wordpress"},"spec":{"accessModes":["ReadWriteOnce"],"capacity":{"storage":"1Gi"},"local":{"path":"/mnt/wordpress"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["i-0745cacfcef3a2325"]}]}]}},"storageClassName":"local-storage"}}
+    pv.kubernetes.io/bound-by-controller: "yes"
+  creationTimestamp: "2025-04-08T19:47:07Z"
+--
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+ubuntu@ip-172-31-81-183:~/dz21$ kubectl get pvc -n dev -o wide
+NAME            STATUS   VOLUME         CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+mysql-pvc       Bound    pv-mysql       1Gi        RWO            local-storage   <unset>                 16m   Filesystem
+wordpress-pvc   Bound    pv-wordpress   1Gi        RWO            local-storage   <unset>                 16m   Filesystem
+ubuntu@ip-172-31-81-183:~/dz21$ kubectl get pods -n dev -o wide
+NAME                         READY   STATUS    RESTARTS   AGE     IP             NODE                  NOMINATED NODE   READINESS GATES
+mysql-0                      1/1     Running   0          6m38s   100.96.1.29    i-049c5b840383c4e62   <none>           <none>
+wordpress-6dfbd6d95c-cwgzj   1/1     Running   0          70m     100.96.3.115   i-0745cacfcef3a2325   <none>           <none>
+ubuntu@ip-172-31-81-183:~/dz21$
