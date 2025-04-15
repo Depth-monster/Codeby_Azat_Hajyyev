@@ -1,0 +1,63 @@
+ubuntu@ip-172-31-81-183:~$ kubectl get pods
+No resources found in default namespace.
+ubuntu@ip-172-31-81-183:~$ kubectl get pods -n dev
+NAME                         READY   STATUS    RESTARTS   AGE
+mysql-0                      1/1     Running   0          12h
+wordpress-747cc76769-fc228   1/1     Running   0          49m
+ubuntu@ip-172-31-81-183:~$ kubectl get hpa -n dev
+wordpress-hpa   Deployment/wordpress   cpu: 2%/50%   1         2         1          21h
+ubuntu@ip-172-31-81-183:~$ ab -n 100 -c 50 http://184.73.9.120:30080/
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 184.73.9.120 (be patient).....done
+
+
+Server Software:        Apache/2.4.62
+Server Hostname:        184.73.9.120
+Server Port:            30080
+
+Document Path:          /
+Document Length:        49759 bytes
+
+Concurrency Level:      50
+Time taken for tests:   43.602 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      5002500 bytes
+HTML transferred:       4975900 bytes
+Requests per second:    2.29 [#/sec] (mean)
+Time per request:       21801.249 [ms] (mean)
+Time per request:       436.025 [ms] (mean, across all concurrent requests)
+Transfer rate:          112.04 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    2   1.1      2       5
+Processing:   301 19940 9461.6  19191   37903
+Waiting:      296 19529 9297.5  18791   37641
+Total:        302 19942 9461.5  19191   37904
+
+Percentage of the requests served within a certain time (ms)
+  50%  19191
+  66%  23799
+  75%  27697
+  80%  30494
+  90%  33499
+  95%  35507
+  98%  36300
+  99%  37904
+ 100%  37904 (longest request)
+ubuntu@ip-172-31-81-183:~$ kubectl get hpa -n dev
+NAME            REFERENCE              TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+wordpress-hpa   Deployment/wordpress   cpu: 300%/50%   1         2         2          21h
+ubuntu@ip-172-31-81-183:~$ kubectl get pods
+No resources found in default namespace.
+ubuntu@ip-172-31-81-183:~$ kubectl get pods -n de
+No resources found in de namespace.
+ubuntu@ip-172-31-81-183:~$ kubectl get pods -n dev
+NAME                         READY   STATUS    RESTARTS   AGE
+mysql-0                      1/1     Running   0          12h
+wordpress-747cc76769-fc228   1/1     Running   0          51m
+wordpress-747cc76769-wxc7w   1/1     Running   0          52s
