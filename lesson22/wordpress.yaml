@@ -18,7 +18,8 @@ metadata:
   name: wordpress
   namespace: dev
 spec:
-  replicas: 1
+  # you don't need replicas in deployment spec.replicas if you're using hpa 
+  #replicas: 1
   selector:
     matchLabels:
       app: wordpress
