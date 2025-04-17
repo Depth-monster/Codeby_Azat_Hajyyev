@@ -1,24 +1,18 @@
-Script started on 2025-04-17 13:33:40+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="182" LINES="57"]
-[?2004h]0;ubuntu@ip-172-31-81-183: ~/dz23ubuntu@ip-172-31-81-183:~/dz23$ [7mkubectl apply -f diagnostics.yaml[27mkubectl apply -f diagnostics.yaml
-[?2004lconfigmap/diagnostic-script unchanged
+ubuntu@ip-172-31-81-183:~/dz23$ kubectl apply -f diagnostics.yaml
+configmap/diagnostic-script unchanged
 serviceaccount/diagnostic-sa unchanged
 role.rbac.authorization.k8s.io/pod-reader unchanged
 rolebinding.rbac.authorization.k8s.io/read-pods unchanged
 pod/diagnostic-pod configured
-[?2004h]0;ubuntu@ip-172-31-81-183: ~/dz23ubuntu@ip-172-31-81-183:~/dz23$ [7mkubectl logs diagnostic-pod -n dev[27m
-[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ckubectl logs diagnostic-pod -n dev
-[A
-[?2004lLooking for pods in namespace dev:
+ubuntu@ip-172-31-81-183:~/dz23$ kubectl logs diagnostic-pod -n dev
+Looking for pods in namespace dev:
 NAME                         READY   STATUS              RESTARTS   AGE
 diagnostic-pod               0/1     ContainerCreating   0          1s
 mysql-0                      1/1     Running             0          34m
 wordpress-6dfbd6d95c-b27cw   1/1     Running             0          28m
-[?2004h]0;ubuntu@ip-172-31-81-183: ~/dz23ubuntu@ip-172-31-81-183:~/dz23$ [7mkubectl get pods -n dev[27mkubectl get pods -n dev
-[?2004lNAME                         READY   STATUS    RESTARTS   AGE
+ubuntu@ip-172-31-81-183:~/dz23$ kubectl get pods -n dev
+NAME                         READY   STATUS    RESTARTS   AGE
 diagnostic-pod               1/1     Running   0          3m27s
 mysql-0                      1/1     Running   0          37m
 wordpress-6dfbd6d95c-b27cw   1/1     Running   0          32m
-[?2004h]0;ubuntu@ip-172-31-81-183: ~/dz23ubuntu@ip-172-31-81-183:~/dz23$ [?2004l
-exit
-
-Script done on 2025-04-17 13:34:26+00:00 [COMMAND_EXIT_CODE="0"]
+ubuntu@ip-172-31-81-183:~/dz23$
