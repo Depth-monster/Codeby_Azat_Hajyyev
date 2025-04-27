@@ -1,0 +1,18 @@
+ubuntu@ip-172-31-81-183:~/dz23$ kubectl apply -f diagnostics.yaml
+configmap/diagnostic-script unchanged
+serviceaccount/diagnostic-sa unchanged
+role.rbac.authorization.k8s.io/pod-reader unchanged
+rolebinding.rbac.authorization.k8s.io/read-pods unchanged
+pod/diagnostic-pod configured
+ubuntu@ip-172-31-81-183:~/dz23$ kubectl logs diagnostic-pod -n dev
+Looking for pods in namespace dev:
+NAME                         READY   STATUS              RESTARTS   AGE
+diagnostic-pod               0/1     ContainerCreating   0          1s
+mysql-0                      1/1     Running             0          34m
+wordpress-6dfbd6d95c-b27cw   1/1     Running             0          28m
+ubuntu@ip-172-31-81-183:~/dz23$ kubectl get pods -n dev
+NAME                         READY   STATUS    RESTARTS   AGE
+diagnostic-pod               1/1     Running   0          3m27s
+mysql-0                      1/1     Running   0          37m
+wordpress-6dfbd6d95c-b27cw   1/1     Running   0          32m
+ubuntu@ip-172-31-81-183:~/dz23$

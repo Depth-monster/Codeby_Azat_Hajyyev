@@ -1,0 +1,5 @@
+# Игнорируем все каталоги .terraform
+.terraform/
+.terraform.lock.hcl
+# Игнорируем все файлы с расширением .pem
+*.pem
