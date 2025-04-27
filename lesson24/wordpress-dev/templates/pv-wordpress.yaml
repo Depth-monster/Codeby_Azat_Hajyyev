@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: wordpress-pv
+  labels:
+    {{- include "wordpress-dev.labels" . | nindent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.wordpress.storage.size }}
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.wordpress.storage.storageClass }}
+  local:
+    path: {{ .Values.wordpress.storage.localPath }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - {{ .Values.wordpress.storage.nodeName }}

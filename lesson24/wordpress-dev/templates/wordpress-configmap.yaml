@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "wordpress-dev.fullname" . }}-wordpress-config
+  namespace: {{ .Release.Namespace }}
+data:
+  WORDPRESS_DB_HOST: {{ include "wordpress-dev.fullname" . }}-mysql-service.{{ .Release.Namespace }}.svc.cluster.local
+  WORDPRESS_DB_NAME: {{ .Values.wordpress.credentials.dbName }}
+  WORDPRESS_DB_USER: {{ .Values.wordpress.credentials.dbUser }}

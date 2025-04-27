@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "wordpress-dev.fullname" . }}-mysql-pv
+  labels:
+    {{- include "wordpress-dev.labels" . | nindent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.mysql.storage.size }}
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.mysql.storage.storageClass }}
+  local:
+    path: {{ .Values.mysql.storage.localPath }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - {{ .Values.mysql.storage.nodeName }}

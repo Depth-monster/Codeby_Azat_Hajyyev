@@ -1,0 +1,11 @@
+apiVersion: v2
+name: wordpress-dev
+description: A Helm chart for deploying Wordpress + MySQL
+
+type: application
+
+
+version: 0.1.0
+
+
+appVersion: "1.16.0"

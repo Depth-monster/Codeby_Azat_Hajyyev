@@ -1,0 +1,66 @@
+# values.yaml
+
+wordpress:
+  replicaCount: 1
+  image: wordpress:latest
+  credentials:
+    dbName: wordpress
+    dbUser: wpuser
+    dbPassword: wppassword
+  port:
+    servicePort: 80
+    containerPort: 80
+    targetPort: 80
+    nodePort: 30081
+  storage:
+    size: 1Gi
+    localPath: /mnt/wordpress
+    mountPath: /var/www/html
+    storageClass: local-storage
+    nodeName: i-027622a8ce1b6a185
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+  env:
+    WORDPRESS_SITE_URL: http://hajyyev.com
+    WORDPRESS_HOME: http://hajyyev.com
+  component: wordpress
+mysql:
+  replicaCount: 1
+  image: mysql:5.7
+  credentials:
+    dbName: wordpress
+    user: wpuser
+    password: wppassword
+    rootPassword: rootpassword
+  port:
+    servicePort: 3306
+    containerPort: 3306
+  storage:
+    size: 1Gi
+    mountPath: /var/lib/mysql
+    localPath: /mnt/mysql
+    storageClass: local-storage
+    nodeName: i-08c14044f0aa61b2a
+
+networkPolicy:
+  enabled: true
+
+hpa:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 50
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations: {}
+  host: hajyyev.com
+  tls: false
+  tlsSecret: ""
+

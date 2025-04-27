@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "wordpress-dev.fullname" . }}-mysql
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "wordpress-dev.labels" . | nindent 4 }}
+spec:
+  serviceName: {{ include "wordpress-dev.fullname" . }}-mysql-headless
+  replicas: {{ .Values.mysql.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "wordpress-dev.name" . }}
+      app.kubernetes.io/component: mysql
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "wordpress-dev.name" . }}
+        app.kubernetes.io/component: mysql
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - {{ .Values.mysql.storage.nodeName }}
+      containers:
+        - name: mysql
+          image: {{ .Values.mysql.image }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.mysql.port.containerPort }}
+              name: mysql
+          envFrom:
+            - configMapRef:
+                name: {{ include "wordpress-dev.fullname" . }}-mysql-config
+            - secretRef:
+                name: {{ include "wordpress-dev.fullname" . }}-mysql-secret
+          volumeMounts:
+            - name: mysql-storage
+              mountPath: {{ .Values.mysql.storage.mountPath }}
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-storage
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: {{ .Values.mysql.storage.size }}
+        storageClassName: {{ .Values.mysql.storage.storageClass }}
