@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "wordpress-dev.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "wordpress-dev.labels" . | nindent 4 }}
+spec:
+#  replicas: {{ .Values.wordpress.replicaCount }} don't use when hpa is enabled
+  selector:
+    matchLabels:
+      {{- include "wordpress-dev.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "wordpress-dev.selectorLabels" . | nindent 8 }}
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: {{ .Values.wordpress.storage.nodeName }}
+      containers:
+        - name: wordpress
+          image: {{ .Values.wordpress.image }}
+          resources:
+            {{- toYaml .Values.wordpress.resources | nindent 12 }}
+          ports:
+            - containerPort: {{ .Values.wordpress.port.containerPort }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "wordpress-dev.fullname" . }}-wordpress-config
+            - secretRef:
+                name: {{ include "wordpress-dev.fullname" . }}-wordpress-secret
+          env:
+            - name: WORDPRESS_SITE_URL
+              value: {{ .Values.wordpress.env.WORDPRESS_SITE_URL | quote }}
+            - name: WORDPRESS_HOME
+              value: {{ .Values.wordpress.env.WORDPRESS_HOME | quote }}
+            - name: WORDPRESS_CONFIG_EXTRA
+              value: |
+                define('WP_HOME', getenv('WORDPRESS_HOME'));
+                define('WP_SITEURL', getenv('WORDPRESS_SITE_URL'));
+          volumeMounts:
+            - name: wordpress-storage
+              mountPath: {{ .Values.wordpress.storage.mountPath }}
+      volumes:
+        - name: wordpress-storage
+          persistentVolumeClaim:
+            claimName: wordpress-pvc

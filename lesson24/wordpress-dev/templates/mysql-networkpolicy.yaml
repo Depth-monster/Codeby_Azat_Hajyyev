@@ -1,0 +1,25 @@
+{{- if .Values.networkPolicy.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "wordpress-dev.fullname" . }}-mysql-network-policy
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "wordpress-dev.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/component: mysql
+      app.kubernetes.io/name: {{ include "wordpress-dev.name" . }}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: wordpress
+              app.kubernetes.io/name: {{ include "wordpress-dev.name" . }}
+      ports:
+        - protocol: TCP
+          port: {{ .Values.mysql.port.servicePort }}
+{{- end }}
