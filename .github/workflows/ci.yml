@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app: [hello-world, hello-jenkins, hello-devops]
+        app: [hello-world ] #, hello-jenkins, hello-devops]
 
     steps:
       - name: Checkout code
