@@ -32,11 +32,11 @@ jobs:
       - name: Build and test with Maven
         run: mvn -B package --file lesson28/${{ matrix.app }}/pom.xml
 
-      - name: Upload build artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          name: ${{ matrix.app }}-jar
-          path: lesson28/${{ matrix.app }}/target/*.jar
+     # - name: Upload build artifact
+     #   uses: actions/upload-pages-artifact@v2
+     #   with:
+     #     name: ${{ matrix.app }}-jar
+     #     path: lesson28/${{ matrix.app }}/target/*.jar
 
       - name: Docker login
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
