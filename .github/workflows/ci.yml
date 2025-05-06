@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.app }}-jar
-          path: lesson28/${{ matrix.app }}/target/*jar-with-dependencies.jar
+          path: lesson28/${{ matrix.app }}/target/*.jar
 
       - name: Docker login
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
