@@ -33,7 +33,7 @@ jobs:
         run: mvn -B package --file lesson28/${{ matrix.app }}/pom.xml
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-pages-artifact@v2
         with:
           name: ${{ matrix.app }}-jar
           path: lesson28/${{ matrix.app }}/target/*.jar
